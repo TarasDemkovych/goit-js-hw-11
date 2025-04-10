@@ -1,6 +1,6 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-import { makeSearch} from "./js/pixabay-api";
+import { getImagesByQuery} from "./js/pixabay-api";
 import { createMarkup, clearGallery, toggleLoader } from "./js/render-functions"
 import iconPath from "./img/Group.svg"
 
@@ -32,7 +32,7 @@ function handleSubmit(evt) {
     }
     clearGallery();
     toggleLoader();
-    makeSearch(search)
+    getImagesByQuery(search)
         .then(resp => {
             if (resp.data.total === 0) {
                 iziToast.error({
